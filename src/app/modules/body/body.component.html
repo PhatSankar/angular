@@ -1,0 +1,18 @@
+<div class="w-full h-full p-6">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 border">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+            <tr>
+                <th scope="col" class="px-6 py-3">Id</th>
+                <th scope="col" class="px-6 py-3">Start Date</th>
+                <th scope="col" class="px-6 py-3">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-white border-b" *ngFor="let department of department$ |async">
+                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{{department.id}}</td>
+                <td class="px-6 py-3">{{department.startDate}}</td>
+                <td class="px-6 py-3">{{department.departmentName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
