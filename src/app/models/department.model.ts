@@ -6,5 +6,5 @@ export interface Department {
     updatedAt:string,
     startDate: string,
     departmentName: string,
-    employess: Employee[]
+    employees: Employee[]
 }
