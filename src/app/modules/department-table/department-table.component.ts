@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Observable, startWith, switchMap } from 'rxjs';
 import { Department } from '../../models/department.model';
@@ -9,7 +9,7 @@ import { DepartmentService } from '../../services/department/department.service'
   templateUrl: './department-table.component.html',
   styleUrl: './department-table.component.css',
 })
-export class DepartmentTableComponent {
+export class DepartmentTableComponent implements OnInit {
   readonly #departmentRefetch$ = new Subject<void>();
   departments$: Observable<Department[]> = this.#departmentRefetch$.pipe(
     startWith(true),
@@ -20,6 +20,11 @@ export class DepartmentTableComponent {
     private deparmentSerive: DepartmentService,
     private router: Router
   ) {}
+  ngOnInit(): void {
+    this.deparmentSerive.refeshList.subscribe((_) => {
+      this.#departmentRefetch$.next();
+    });
+  }
 
   onClickRow(departId: number) {
     this.router.navigate(['departments', departId]);

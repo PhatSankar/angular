@@ -1,0 +1,26 @@
+<div class="flex flex-row flex-1 p-8">
+    <form class="flex flex-1 flex-col justify-center gap-4" [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col">
+            <label>Number of hours</label>
+            <input type="number" formControlName="numberOfHour" class="p-2 border-2" />
+
+            <label>Employee</label>
+            <select formControlName="employeeId" class="p-2 border-2">
+                <option *ngFor="let employee of (employees$ | async)" [ngValue]="employee.id">
+                    {{ employee.firstName }} {{ employee.middleName }} {{ employee.lastName }}
+                </option>
+            </select>
+
+            <label>Project</label>
+            <select formControlName="projectId" class="p-2 border-2">
+                <option *ngFor="let project of (projects$ | async)" [ngValue]="project.id">
+                    {{ project.projectName }}
+                </option>
+            </select>
+        </div>
+        <button class="bg-blue-500 text-white w-fit p-2 border rounded hover:bg-white hover:text-blue-500"
+            type="submit">
+            Submit
+        </button>
+    </form>
+</div>

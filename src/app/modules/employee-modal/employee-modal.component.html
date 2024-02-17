@@ -1,0 +1,40 @@
+<div class="flex flex-row flex-1 p-8">
+    <form class="flex flex-1 flex-col justify-center gap-4" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col">
+            <label>Date of birth</label>
+            <input type="date" formControlName="dateOfBirth" class="p-2 border-2" />
+            <label>First name</label>
+            <input type="text" formControlName="firstName" class="p-2 border-2" />
+            <label>Middle name</label>
+            <input type="text" formControlName="middleName" class="p-2 border-2" />
+            <label>Last name</label>
+            <input type="text" formControlName="lastName" class="p-2 border-2" />
+            <label>Salary</label>
+            <input type="number" formControlName="salary" class="p-2 border-2" />
+            <label>Gender</label>
+            <div class="flex flex-row gap-2">
+                <div class="flex gap-1">
+                    <input id="male" type="radio" formControlName="gender" value="MALE" name="gender" checked
+                        class="p-2 border-2" />
+                    <label for="male">Male</label>
+                </div>
+
+                <div class="flex gap-1">
+                    <input id="female" type="radio" formControlName="gender" name="gender" value="FEMALE"
+                        class="p-2 border-2" />
+                    <label for="female">Female</label>
+                </div>
+            </div>
+            <label>Department</label>
+            <select formControlName="depId" class="p-2 border-2">
+                <option *ngFor="let deparment of (departments$ | async)" [ngValue]="deparment.id">
+                    {{ deparment.departmentName }}
+                </option>
+            </select>
+        </div>
+        <button class="bg-blue-500 text-white w-fit p-2 border rounded hover:bg-white hover:text-blue-500"
+            type="submit">
+            Submit
+        </button>
+    </form>
+</div>

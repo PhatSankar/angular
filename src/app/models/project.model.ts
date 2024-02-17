@@ -1,11 +1,11 @@
-import { Department } from "./department.model";
+import { Department } from './department.model';
 
 export interface Project {
-    id: number,
-    createdAt: string,
-    updatedAt:string,
+  id: number;
+  createdAt: string;
+  updatedAt: string;
 
-    area:string,
-    managedDepartment:Department,
-
+  area: string;
+  projectName: string;
+  managedDepartment: Department;
 }

@@ -1,5 +1,38 @@
 <div class="flex flex-row justify-center w-full fixed gap-4 bg-gray-100 p-2 border-gray-200">
-    <a>Department</a>
-    <a>Employee</a>
-    <a>Project</a>
+  <a class="relative" (mouseenter)="onHoverDepartment(true)" (mouseleave)="onHoverDepartment(false)">
+    Department
+    <div class="flex flex-col items-center justify-center w-max absolute top-full left-1/2 -translate-x-1/2 p-2"
+      *ngIf="isShownDepartmentDropdown">
+      <div class="p-2 bg-gray-100 cursor-pointer hover:bg-gray-50" (click)="onShowDepartmentModal(true)">
+        Create new department
+      </div>
+    </div>
+  </a>
+  <a class="relative" (mouseenter)="onHoverEmployee(true)" (mouseleave)="onHoverEmployee(false)">
+    Employee
+    <div class="flex flex-col items-center justify-center w-max absolute top-full left-1/2 -translate-x-1/2 p-2"
+      *ngIf="isShownEmployeeDropdown">
+      <div class="p-2 bg-gray-100 cursor-pointer hover:bg-gray-50" (click)="onShowEmployeeModal(true)">
+        Create new employee
+      </div>
+    </div>
+  </a>
+  <a class="relative" (mouseenter)="onHoverProject(true)" (mouseleave)="onHoverProject(false)">
+    Project
+    <div class="flex flex-col items-center justify-center w-max absolute top-full left-1/2 -translate-x-1/2 p-2"
+      *ngIf="isShownProjectDropdown">
+      <div class="p-2 bg-gray-100 cursor-pointer hover:bg-gray-50" (click)="onShowProjectModal(true)">
+        Create new project
+      </div>
+    </div>
+  </a>
+  <a class="relative" (mouseenter)="onHoverAssignment(true)" (mouseleave)="onHoverAssignment(false)">
+    Assignment
+    <div class="flex flex-col items-center justify-center w-max absolute top-full left-1/2 -translate-x-1/2 p-2"
+      *ngIf="isShownSignmentDropdown">
+      <div class="p-2 bg-gray-100 cursor-pointer hover:bg-gray-50" (click)="onShowAssignmentModal(true)">
+        Create new assignment
+      </div>
+    </div>
+  </a>
 </div>

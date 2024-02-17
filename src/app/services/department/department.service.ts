@@ -1,13 +1,27 @@
+import { Department } from './../../models/department.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Department } from '../../models/department.model';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DepartmentService {
+  refeshList: Subject<void> = new Subject<void>();
   constructor(private httpClient: HttpClient) {}
+
+  addDepartment(
+    departmentName: string,
+    startDate: string
+  ): Observable<Department> {
+    return this.httpClient.post<Department>(
+      'http://localhost:8080/jakartaee-hello-world/departments',
+      {
+        departmentName,
+        startDate,
+      }
+    );
+  }
 
   getDepartment$(): Observable<Department[]> {
     return this.httpClient.get<Department[]>(
@@ -19,5 +33,9 @@ export class DepartmentService {
     return this.httpClient.get<Department>(
       `http://localhost:8080/jakartaee-hello-world/departments/${id}`
     );
+  }
+
+  refreshDepartList() {
+    this.refeshList.next();
   }
 }

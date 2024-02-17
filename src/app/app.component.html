@@ -1,4 +1,15 @@
 <app-header></app-header>
 <div class="min-h-screen h-screen pt-[40px] flex flex-col overflow-y-scroll">
-      <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+  <div *ngIf="isShowDepartmentModal || isShowEmployeeModal || isShowProjectModal || isShowAssignmentModal"
+    class="w-full h-full bg-black bg-opacity-50 absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center"
+    (click)="onClickBackground()">
+    <div class="bg-white w-1/2" (click)="$event.stopPropagation()">
+      <app-department-modal *ngIf="isShowDepartmentModal" />
+      <app-employee-modal *ngIf="isShowEmployeeModal" />
+      <app-project-modal *ngIf="isShowProjectModal" />
+      <app-assignment-modal *ngIf="isShowAssignmentModal" />
+    </div>
+  </div>
+
 </div>

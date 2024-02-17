@@ -1,0 +1,26 @@
+<div class="flex flex-row flex-1 p-8">
+    <form class="flex flex-1 flex-col justify-center gap-4" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col">
+            <label>Project name</label>
+            <input type="text" formControlName="projectName" class="p-2 border-2" />
+
+            <label>Area</label>
+            <select formControlName="area" class="p-2 border-2">
+                <option *ngFor="let area of areas" [selected]="area ==='HCM'" [ngValue]="area">
+                    {{ area }}
+                </option>
+            </select>
+
+            <label>Department</label>
+            <select formControlName="depId" class="p-2 border-2">
+                <option *ngFor="let deparment of (departments$ | async)" [ngValue]="deparment.id">
+                    {{ deparment.departmentName }}
+                </option>
+            </select>
+        </div>
+        <button class="bg-blue-500 text-white w-fit p-2 border rounded hover:bg-white hover:text-blue-500"
+            type="submit">
+            Submit
+        </button>
+    </form>
+</div>

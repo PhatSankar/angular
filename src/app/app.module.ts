@@ -14,6 +14,10 @@ import { ForgotPasswordComponent } from './modules/forgot-password/forgot-passwo
 import { ReactiveFormsModule } from '@angular/forms';
 import { DepartmentDetailComponent } from './modules/department-detail/department-detail.component';
 import { DepartmentTableComponent } from './modules/department-table/department-table.component';
+import { DepartmentModalComponent } from './modules/department-modal/department-modal.component';
+import { EmployeeModalComponent } from './modules/employee-modal/employee-modal.component';
+import { ProjectModalComponent } from './modules/project-modal/project-modal.component';
+import { AssignmentModalComponent } from './modules/assignment-modal/assignment-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,10 @@ import { DepartmentTableComponent } from './modules/department-table/department-
     ForgotPasswordComponent,
     DepartmentDetailComponent,
     DepartmentTableComponent,
+    DepartmentModalComponent,
+    EmployeeModalComponent,
+    ProjectModalComponent,
+    AssignmentModalComponent,
   ],
   imports: [
     BrowserModule,
