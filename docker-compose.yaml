@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  angular-fe:
+    container_name: employee-angular
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "4200:4200"
