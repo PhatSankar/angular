@@ -31,6 +31,15 @@ describe('DepartmentService', () => {
     ],
   };
 
+  const mockDepartmentCreate: Department = {
+    id: 1,
+    createdAt: '20-04-2022',
+    updatedAt: '20-04-2022',
+    startDate: '20-04-2022',
+    departmentName: 'AA',
+    employees: [],
+  };
+
   const mockDepartments: Department[] = [mockDepartmentSingle];
 
   beforeEach(() => {
@@ -68,5 +77,22 @@ describe('DepartmentService', () => {
       `http://localhost:8080/jakartaee-hello-world/departments/${validId}`
     );
     req.flush(mockDepartmentSingle);
+  });
+
+  it('should add Departments', () => {
+    service.addDepartment('AA', '20-04-2022').subscribe((res) => {
+      expect(res).toEqual(mockDepartmentCreate);
+    });
+
+    const req = httpClient.expectOne(
+      'http://localhost:8080/jakartaee-hello-world/departments'
+    );
+    req.flush(mockDepartmentCreate);
+  });
+
+  it('should refeshList', () => {
+    const spyNext = spyOn(service.refeshList, 'next');
+    service.refreshDepartList();
+    expect(spyNext).toHaveBeenCalled();
   });
 });

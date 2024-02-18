@@ -1,35 +1,45 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { ModalService } from './services/modal/modal.service';
+import { of } from 'rxjs';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let modalService: ModalService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, AppModule],
+      declarations: [AppComponent],
+      providers: [ModalService],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'employeeProject'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('employeeProject');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    modalService = TestBed.inject(ModalService);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, employeeProject');
+  });
+
+  it('should call onClickBackgroud and set all property to false', () => {
+    component.isShowAssignmentModal = true;
+    component.isShowDepartmentModal = true;
+    component.isShowEmployeeModal = true;
+    component.isShowProjectModal = true;
+
+    expect(component.isShowDepartmentModal).toBeTrue();
+    expect(component.isShowEmployeeModal).toBeTrue();
+    expect(component.isShowProjectModal).toBeTrue();
+    expect(component.isShowAssignmentModal).toBeTrue();
+
+    component.onClickBackground();
+    expect(component.isShowDepartmentModal).toBeFalse();
+    expect(component.isShowEmployeeModal).toBeFalse();
+    expect(component.isShowProjectModal).toBeFalse();
+    expect(component.isShowAssignmentModal).toBeFalse();
   });
 });

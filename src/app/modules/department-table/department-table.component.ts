@@ -10,8 +10,8 @@ import { DepartmentService } from '../../services/department/department.service'
   styleUrl: './department-table.component.css',
 })
 export class DepartmentTableComponent implements OnInit {
-  readonly #departmentRefetch$ = new Subject<void>();
-  departments$: Observable<Department[]> = this.#departmentRefetch$.pipe(
+  readonly departmentRefetch$ = new Subject<void>();
+  departments$: Observable<Department[]> = this.departmentRefetch$.pipe(
     startWith(true),
     switchMap(() => this.deparmentSerive.getDepartment$())
   );
@@ -22,7 +22,7 @@ export class DepartmentTableComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.deparmentSerive.refeshList.subscribe((_) => {
-      this.#departmentRefetch$.next();
+      this.departmentRefetch$.next();
     });
   }
 

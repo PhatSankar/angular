@@ -2,7 +2,6 @@ import { ModalService } from '../../services/modal/modal.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DepartmentService } from '../../services/department/department.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-department-modal',

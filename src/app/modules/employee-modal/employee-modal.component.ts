@@ -5,7 +5,6 @@ import { Department } from '../../models/department.model';
 import { DepartmentService } from '../../services/department/department.service';
 import { EmployeeService } from '../../services/employee/employee.service';
 import { Employee } from '../../models/employee.model';
-import { error } from 'console';
 import { ModalService } from '../../services/modal/modal.service';
 
 @Component({

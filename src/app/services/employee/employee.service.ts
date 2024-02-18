@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class EmployeeService {
   constructor(private httpCLient: HttpClient) {}
 
-  createEmployee(employee: Employee, depId: number) {
-    return this.httpCLient.post(
+  createEmployee(employee: Employee, depId: number): Observable<Employee> {
+    return this.httpCLient.post<Employee>(
       'http://localhost:8080/jakartaee-hello-world/employees',
       { ...employee, depId }
     );
